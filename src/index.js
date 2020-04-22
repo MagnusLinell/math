@@ -36,7 +36,7 @@ ReactDOM.render(
         <Route path="/control">
           <AdminApp />
         </Route>
-        <Route path="/">
+        <Route path="/learn">
           <OpenApp />
         </Route>
       </Switch>

@@ -7,7 +7,7 @@ const Lern = () => {
   const [course, setCourse] = useState({});
 
   const handleSave = () => {
-    
+
   };
 
   useEffect(() => {
@@ -36,8 +36,16 @@ const Lern = () => {
     <div>
       <h1>{course.title}</h1>
       <p>{course.text}</p>
-      <input type="text" />
-      <button type="button" onClick={handleSave}>Svara</button>
+      <h2>Frågor</h2>
+      {course.exersices.map(exersice => (
+        <div>
+          <div>{exersice.index}</div>
+          <h3>{exersice.title}</h3>
+          <p>{exersice.text}</p>
+          <input type="text" />
+          <button type="button" onClick={handleSave}>Svara</button>
+        </div>
+      ))}
     </div>
   );
 };

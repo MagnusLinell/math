@@ -41,7 +41,7 @@ const Lern = () => {
         <div>
           <h3>Fråga {exersice.index}</h3>
           <h4>{exersice.title}</h4>
-          <p>{exersice.text}</p>
+          <p>{exersice.text} =</p>
           <input type="text" />
           <button type="button" onClick={handleSave}>Svara</button>
         </div>

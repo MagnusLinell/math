@@ -37,7 +37,7 @@ const Lern = () => {
       <h1>{course.title}</h1>
       <p>{course.text}</p>
       <h2>Frågor</h2>
-      {course.exersices.map(exersice => (
+      {course && course.exersices && course.exersices.map(exersice => (
         <div>
           <div>{exersice.index}</div>
           <h3>{exersice.title}</h3>

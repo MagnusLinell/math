@@ -29,7 +29,10 @@ const Lern = () => {
   }
 
   return (
-    <h1>{course.name}</h1>
+    <div>
+      <h1>{course.title}</h1>
+      <p>{course.text}</p>
+    </div>
   );
 };
 

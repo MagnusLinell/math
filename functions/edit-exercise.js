@@ -24,7 +24,7 @@ const run = () => {
         name: String,
         title: String,
         dependentOn: String,
-        text: Number,
+        text: String,
       }));
     }
 

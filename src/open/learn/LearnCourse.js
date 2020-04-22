@@ -1,5 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import styled from 'styled-components';
+
+const ProgressBar = styled.div`
+  display: flex;
+  height: 1rem;
+  font-size: .75rem;
+  width: 90%;
+  background-color: #e9ecef;
+  border-radius: .25rem;
+`;
+
+const Center = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
 
 const Lern = () => {
   const { courseName } = useParams();
@@ -34,6 +50,9 @@ const Lern = () => {
 
   return (
     <div>
+      <Center>
+        <ProgressBar progress={1 / course && course.exercises && course.exercise.length} />
+      </Center>
       <h1>{course.title}</h1>
       <p>{course.text}</p>
       <h2>Frågor</h2>

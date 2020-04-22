@@ -39,6 +39,11 @@ const run = () => {
       statusCode: 200,
       body: JSON.stringify(doc)
     };
+    console.log({ response });
     return response;
   });
 };
+
+if (process.env.ENVIRONMENT !== 'production') {
+  run();
+}

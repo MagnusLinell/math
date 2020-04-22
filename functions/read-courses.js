@@ -27,8 +27,8 @@ const run = () => {
       conn.model('courses', new mongoose.Schema({
         name: String,
         title: String,
-        dependentOn: String,
         text: String,
+        dependentOn: String,
       }));
     }
 
@@ -43,3 +43,7 @@ const run = () => {
     return response;
   });
 };
+
+if (process.env.ENVIRONMENT !== 'production') {
+  run();
+}

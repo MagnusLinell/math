@@ -5,6 +5,15 @@ const uri = `mongodb+srv://${process.env.MONGO_USERNAME || 'math'}:${process.env
 
 let conn = null;
 
+const headers = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
+  'Content-Type': 'application/json',
+  'Access-Control-Allow-Methods': '*',
+  'Access-Control-Max-Age': '2592000',
+  'Access-Control-Allow-Credentials': 'true',
+};
+
 exports.handler = function (event, context, callback) {
   context.callbackWaitsForEmptyEventLoop = false;
   const { body } = event;
@@ -41,14 +50,7 @@ const run = ({ name }) => {
     const response = {
       statusCode: 200,
       body: JSON.stringify(doc),
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Methods': '*',
-        'Access-Control-Max-Age': '2592000',
-        'Access-Control-Allow-Credentials': 'true',
-      }
+      headers
     };
     console.log({ response });
     return response;
@@ -56,5 +58,5 @@ const run = ({ name }) => {
 };
 
 if (process.env.ENVIRONMENT !== 'production') {
-  run();
+  run({name: 'algebra-1'});
 }

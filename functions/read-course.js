@@ -7,8 +7,11 @@ let conn = null;
 
 exports.handler = function (event, context, callback) {
   context.callbackWaitsForEmptyEventLoop = false;
-  const { name } = event.query;
-  run({ name })
+  const { body } = event;
+  if (!body) {
+    return callback({ error: true }, null);
+  }
+  run(JSON.parse(body))
     .then(res => {
       callback(null, res);
     })

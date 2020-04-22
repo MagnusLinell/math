@@ -7,7 +7,7 @@ let conn = null;
 
 exports.handler = function (event, context, callback) {
   context.callbackWaitsForEmptyEventLoop = false;
-  const body = event.body;
+  const { body } = event;
   if (!body) {
     return callback({ error: true }, null);
   }

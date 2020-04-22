@@ -28,31 +28,31 @@ const AdminApp = () => {
         <Header>
           <Menu as={Inline}>
             <MenuItem>
-              <Link to="/">Översikt</Link>
+              <Link to="/control">Översikt</Link>
             </MenuItem>
             <MenuItem>
-              <Link to="/courses">Kurser</Link>
+              <Link to="/control/courses">Kurser</Link>
             </MenuItem>
             <MenuItem>
-              <Link to="/users">Användare</Link>
+              <Link to="/control/users">Användare</Link>
             </MenuItem>
           </Menu>
         </Header>
         <Body>
           <Switch>
-            <Route path="/users">
+            <Route path="/control/users">
               <div>users</div>
             </Route>
-            <Route path="/courses" exact>
+            <Route path="/control/courses" exact>
               <Courses />
             </Route>
-            <Route path="/courses/add">
+            <Route path="/control/courses/add">
               <EditCourse />
             </Route>
-            <Route path="/courses/:name">
+            <Route path="/control/courses/:name">
               <EditCourse />
             </Route>
-            <Route path="/">
+            <Route path="/control">
               <div>home</div>
             </Route>
           </Switch>

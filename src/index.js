@@ -33,7 +33,7 @@ ReactDOM.render(
     <GlobalStyle />
     <Router>
       <Switch>
-        <Route path="/admin">
+        <Route path="/control">
           <AdminApp />
         </Route>
         <Route path="/">

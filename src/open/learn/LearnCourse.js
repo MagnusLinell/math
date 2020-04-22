@@ -6,6 +6,10 @@ const Lern = () => {
 
   const [course, setCourse] = useState({});
 
+  const handleSave = () => {
+    
+  };
+
   useEffect(() => {
     const fetchCourse = async () => {
       const response = await fetch('https://festive-beaver-65f40c.netlify.app/.netlify/functions/read-course', {
@@ -32,6 +36,8 @@ const Lern = () => {
     <div>
       <h1>{course.title}</h1>
       <p>{course.text}</p>
+      <input type="text" />
+      <button type="button" onClick={handleSave}>Svara</button>
     </div>
   );
 };

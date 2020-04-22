@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import {
   BrowserRouter as Router,
@@ -13,6 +13,7 @@ import Inline from '../components/Inline/Inline';
 import Link from '../components/Link/Link';
 import Learn from './learn/Learn';
 
+
 const AppWrapper = styled.div`
   text-align: center;
 `;
@@ -22,6 +23,24 @@ const Body = styled.div`
 `;
 
 const OpenApp = () => {
+  const [exercises, setExersices] = useState([]);
+
+  useEffect(() => {
+    const fetchExercies = async () => {
+      const response = await fetch('https://festive-beaver-65f40c.netlify.app/.netlify/functions/read-courses', {
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        }
+      });
+      const body = await response.json();
+      if (body) {
+        setExersices(body);
+      }
+    }
+    fetchExercies();
+  }, []);
+
   return (
     <Router>
       <AppWrapper>
@@ -35,12 +54,11 @@ const OpenApp = () => {
         <Body>
           <h1>Kurs i matematik</h1>
           <Menu as={Inline}>
-            <MenuItem><Link to="/learn/numbers-1">Taluppfattning och tals användning</Link></MenuItem>
-            <MenuItem><Link to="/learn/algebra-1">Algebra</Link></MenuItem>
-            <MenuItem><Link to="/learn/geometry-1">Geometri</Link></MenuItem>
-            <MenuItem><Link to="/learn/probabiliy-1">Sannolikhet och statistik</Link></MenuItem>
-            <MenuItem><Link to="/learn/connection-1">Samband och förändring</Link></MenuItem>
-            <MenuItem><Link to="/learn/problemsolvning-1">Problemlösning</Link></MenuItem>
+            {exercises.map(exercise => (
+              <MenuItem>
+                <Link to={`/learn/${exercise.name}`}>{exercise.title}</Link>
+              </MenuItem>
+            ))}
           </Menu>
           <Switch>
             <Route path="/learn">

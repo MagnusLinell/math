@@ -9,6 +9,7 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
+import 'unfetch/polyfill';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -36,7 +37,7 @@ ReactDOM.render(
         <Route path="/control">
           <AdminApp />
         </Route>
-        <Route path="/learn">
+        <Route path="/">
           <OpenApp />
         </Route>
       </Switch>

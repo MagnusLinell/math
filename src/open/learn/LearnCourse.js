@@ -37,11 +37,11 @@ const Lern = () => {
       <h1>{course.title}</h1>
       <p>{course.text}</p>
       <h2>Frågor</h2>
-      {course && course.exersices && course.exersices.map(exersice => (
+      {course && course.exercises && course.exercises.map(exercise => (
         <div>
-          <h3>Fråga {exersice.index}</h3>
-          <h4>{exersice.title}</h4>
-          <p>{exersice.text} =</p>
+          <h3>Fråga {exercise.index}</h3>
+          <h4>{exercise.title}</h4>
+          <p>{exercise.text} =</p>
           <input type="text" />
           <button type="button" onClick={handleSave}>Svara</button>
         </div>

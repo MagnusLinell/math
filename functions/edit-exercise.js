@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const co = require('co');
 
-const uri = 'mongodb+srv://math:3nRNjorTeiqszDBN@cluster0-tvvgo.mongodb.net/test?retryWrites=true&w=majority';
+const uri = `mongodb+srv://${process.env.MONGO_USERNAME || 'math'}:${process.env.MONGO_PASSWORD || '3nRNjorTeiqszDBN'}@cluster0-tvvgo.mongodb.net/test?retryWrites=true&w=majority`;
 
 let conn = null;
 

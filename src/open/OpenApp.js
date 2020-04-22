@@ -55,7 +55,7 @@ const OpenApp = () => {
           <h1>Kurs i matematik</h1>
           <Menu as={Inline}>
             {exercises.map(exercise => (
-              <MenuItem>
+              <MenuItem fullWidth>
                 <Link to={`/learn/${exercise.name}`}>{exercise.title}</Link>
               </MenuItem>
             ))}

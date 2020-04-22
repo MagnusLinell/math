@@ -37,7 +37,15 @@ const run = () => {
     const doc = yield Model.find({});
     const response = {
       statusCode: 200,
-      body: JSON.stringify(doc)
+      body: JSON.stringify(doc),
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Methods': '*',
+        'Access-Control-Max-Age': '2592000',
+        'Access-Control-Allow-Credentials': 'true',
+      }
     };
     console.log({ response });
     return response;

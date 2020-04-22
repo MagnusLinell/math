@@ -37,8 +37,7 @@ const run = ({ name }) => {
     }
 
     const Model = conn.model('courses');
-
-    const doc = yield Model.find({ name });
+    const doc = yield Model.findOne({ name });
     const response = {
       statusCode: 200,
       body: JSON.stringify(doc),

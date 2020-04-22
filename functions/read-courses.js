@@ -3,6 +3,8 @@ const co = require('co');
 
 const uri = 'mongodb+srv://math:3nRNjorTeiqszDBN@cluster0-tvvgo.mongodb.net/test?retryWrites=true&w=majority';
 
+let conn = null;
+
 exports.handler = function (event, context, callback) {
   context.callbackWaitsForEmptyEventLoop = false;
   run()
@@ -18,7 +20,9 @@ const run = () => {
     if (conn == null) {
       conn = yield mongoose.createConnection(uri, {
         bufferCommands: false,
-        bufferMaxEntries: 0
+        bufferMaxEntries: 0,
+        useUnifiedTopology: true,
+        useNewUrlParser: true,
       });
       conn.model('courses', new mongoose.Schema({
         name: String,
@@ -35,6 +39,9 @@ const run = () => {
       statusCode: 200,
       body: JSON.stringify(doc)
     };
+    console.log({ response });
     return response;
   });
 };
+
+run();

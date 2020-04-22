@@ -18,7 +18,9 @@ const run = () => {
     if (conn == null) {
       conn = yield mongoose.createConnection(uri, {
         bufferCommands: false,
-        bufferMaxEntries: 0
+        bufferMaxEntries: 0,
+        useUnifiedTopology: true,
+        useNewUrlParser: true,
       });
       conn.model('courses', new mongoose.Schema({
         name: String,

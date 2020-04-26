@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const co = require('co');
 
+const courseSchema = require('./course-schema');
+
 const uri = `mongodb+srv://${process.env.MONGO_USERNAME || 'math'}:${process.env.MONGO_PASSWORD || '3nRNjorTeiqszDBN'}@cluster0-tvvgo.mongodb.net/test?retryWrites=true&w=majority`;
 
 let conn = null;
@@ -37,12 +39,7 @@ const run = ({ name }) => {
         useUnifiedTopology: true,
         useNewUrlParser: true,
       });
-      conn.model('courses', new mongoose.Schema({
-        name: String,
-        title: String,
-        text: String,
-        dependentOn: String,
-      }));
+      conn.model('courses', new mongoose.Schema(courseSchema));
     }
 
     const Model = conn.model('courses');

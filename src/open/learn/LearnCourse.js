@@ -42,7 +42,7 @@ const Lern = () => {
       }
     }
     fetchCourse();
-  }, []);
+  }, [courseName]);
 
   if (!course) {
     return null;

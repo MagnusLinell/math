@@ -1,34 +1,42 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
+import Input from '../../components/Input/Input';
+import Button from '../../components/Button/Button';
+import Stack from '../../components/Stack/Stack';
+import Link from '../../components/Link/Link';
+import ProgressBar from '../../components/ProgressBar/ProgressBar';
+import Inline from '../../components/Inline/Inline';
 
-const ProgressBar = styled.div`
-  display: flex;
-  height: 1rem;
-  font-size: .75rem;
-  width: 90%;
-  background-color: #e9ecef;
-  border-radius: .25rem;
-`;
 
 const Center = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
 `
+
+const MaxWidth = styled.div`
+  width: 90%;
+  display: flex;
+  margin: 0 auto;
+`;
 
 const Lern = () => {
   const { courseName } = useParams();
 
+  const [currentExercise, setCurrentExcersie] = useState(0);
   const [course, setCourse] = useState({});
 
-  const handleSave = () => {
-
+  const onSave = (e) => {
+    console.log('answer', e.target.answer.value);
+    e.preventDefault();
+    setCurrentExcersie(currentExercise + 1);
   };
 
   useEffect(() => {
     const fetchCourse = async () => {
-      const response = await fetch('https://festive-beaver-65f40c.netlify.app/.netlify/functions/read-course', {
+      const response = await fetch('/.netlify/functions/read-course', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -50,22 +58,26 @@ const Lern = () => {
 
   return (
     <div>
-      <Center>
-        <ProgressBar progress={1 / course && course.exercises && course.exercise.length} />
-      </Center>
       <h1>{course.title}</h1>
-      <p>{course.text}</p>
-      <h2>Frågor</h2>
-      {course && course.exercises && course.exercises.map(exercise => (
-        <div>
-          <h3>Fråga {exercise.index}</h3>
-          <h4>{exercise.title}</h4>
-          <p>{exercise.text} =</p>
-          <input type="text" />
-          <button type="button" onClick={handleSave}>Svara</button>
-        </div>
-      ))}
-    </div>
+      <MaxWidth>
+        <Center>
+          <ProgressBar progress={currentExercise / (course && course.exercises && course.exercises.length + 3)} />
+        </Center>
+        <Link to="/learn">Close</Link>
+      </MaxWidth>
+      <Stack>
+        {course && course.exercises && course.exercises.map(exercise => (
+          <form key={exercise.index} onSubmit={onSave}>
+            <h4>{exercise.title}</h4>
+            <p>{exercise.text} =</p>
+            <Inline>
+              <Input type="text" name="answer" />
+              <Button variant="primary" type="submit">Svara</Button>
+            </Inline>
+          </form>
+        ))}
+      </Stack>
+    </div >
   );
 };
 

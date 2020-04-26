@@ -196,6 +196,21 @@ const GlobalStyle = createGlobalStyle`
   [hidden] {
     display: none;
   }
+
+  @font-face { font-weight: 300; font-style: normal; font-family: manrope; src: url('../public/fonts/Manrope-Light.ttf'); } 
+
+  @font-face { font-weight: 400; font-style: normal; font-family: manrope; src: url('../public/fonts/Manrope-Medium.ttf'); } 
+
+  @font-face { font-weight: 500; font-style: normal; font-family: manrope; src: url('../public/fonts/Manrope-Regular.ttf'); } 
+
+  @font-face { font-weight: 600; font-style: normal; font-family: manrope; src: url('../public/fonts/Manrope-Bold.ttf'); } 
+
+  @font-face { font-weight: 700; font-style: normal; font-family: manrope; src: url('../public/fonts/Manrope-SemiBold.ttf'); } 
+
+  body {
+    font-family: manrope;
+    font-weight: medium;
+  }
  
 `;
 

@@ -3,7 +3,7 @@ import { Link as RouterLink } from 'react-router-dom';
 
 const Link = styled(RouterLink)`
   text-decoration: none;
-  color: black;
+  color: inherit;
 `;
 
 export default Link;

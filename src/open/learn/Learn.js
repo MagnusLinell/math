@@ -9,7 +9,7 @@ const Lern = () => {
 
   useEffect(() => {
     const fetchExercies = async () => {
-      const response = await fetch('https://festive-beaver-65f40c.netlify.app/.netlify/functions/read-courses', {
+      const response = await fetch('/.netlify/functions/read-courses', {
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',

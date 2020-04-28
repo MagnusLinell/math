@@ -28,7 +28,7 @@ const OpenApp = () => (
       <Header>
         <Menu as={Inline}>
           <MenuItem>
-            <Link to="/learn">Lära</Link>
+            <Link to="/learn">Begrepp</Link>
           </MenuItem>
         </Menu>
       </Header>
